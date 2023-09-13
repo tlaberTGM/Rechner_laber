@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Rechner_laber</string>
+    <string name="wert1">Wert 1</string>
+    <string name="button1">+</string>
+    <string name="button2">-</string>
+    <string name="button3">*</string>
+    <string name="button4">/</string>
+    <string name="wert2">Wert 2</string>
+    <string name="button5">BERECHNEN</string>
+    <string name="button6"> MS</string>
+    <string name="button7">MR</string>
 </resources>
