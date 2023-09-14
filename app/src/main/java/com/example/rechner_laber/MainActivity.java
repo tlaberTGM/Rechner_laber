@@ -2,7 +2,9 @@ package com.example.rechner_laber;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -10,10 +12,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView anzeige = findViewById(R.id.textView);
+        anzeige.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                anzeige.setText(0);
+                return true;
+            }
+        });
     }
 
     public void calc(View v) {
