@@ -3,13 +3,16 @@ package com.example.rechner_laber;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Button b = findViewById(R.id.button);
+        b.setBackgroundColor(Color.GREEN);
     }
 
     public void calc(View v) {
@@ -55,6 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
         anzeige.setText(String.valueOf(ergebnis));
 
+    }
+
+    public void speichern(View v) {
+        SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        TextView t = findViewById(R.id.textView);
+        int i = Integer.parseInt(t.getText().toString());
+        editor.putInt("Ergebnis",i);
+        editor.commit();
+        Toast.makeText(this, "Erfolgreich gespeichert!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void laden(View v) {
+        SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
+        int ergebnis = sharedPref.getInt("Ergebnis", 0);
+        TextView t = findViewById(R.id.textView);
+        t.setText(String.valueOf(ergebnis));
     }
 
 
