@@ -3,6 +3,7 @@ package com.example.rechner_laber;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         anzeige.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                anzeige.setText(0);
+                anzeige.setText("0");
                 return true;
             }
         });
@@ -46,7 +47,14 @@ public class MainActivity extends AppCompatActivity {
             ergebnis = 0;
         }
         TextView anzeige = findViewById(R.id.textView);
+        if(ergebnis < 0) {
+            anzeige.setTextColor(Color.RED);
+        } else{
+            anzeige.setTextColor(Color.BLACK);
+        }
+
         anzeige.setText(String.valueOf(ergebnis));
+
     }
 
 
