@@ -14,6 +14,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * MainActivity
+ * @author Thomas Laber
+ * @version 2023-09-14
+ */
 public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
