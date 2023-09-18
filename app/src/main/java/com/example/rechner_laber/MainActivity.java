@@ -21,6 +21,10 @@ import android.widget.Toast;
  */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Wird ausgeführt beim Starten der App
+     * @param savedInstanceState der letzte Zustand in dem die App verlassen wurde
+     */
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * The background colour of the "Calculate" button is to be set to a green colour in the onResume method to signal readiness for use.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -43,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         b.setBackgroundColor(Color.GREEN);
     }
 
+    /**
+     * A click on the "Berechnen"/"Calculate" button shall perform the selected calculation with the two entered values and output the result in the lower output field.
+     * @param v The view object of the calculator
+     */
     public void calc(View v) {
         EditText input1 = findViewById(R.id.editTextNumber2);
         EditText input2 = findViewById(R.id.editTextNumber3);
@@ -58,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
             ergebnis = zahl1 * zahl2;
         } else if(rg.getCheckedRadioButtonId() == R.id.radioButton4) {
             ergebnis = zahl1 / zahl2;
-        } else {
-            ergebnis = 0;
         }
         TextView anzeige = findViewById(R.id.textView);
         if(ergebnis < 0) {
@@ -72,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The "MS" button (Memory Store) is used for persistent storage (Shared Preferences) of the current result
+     * @param v The view object of the calculator
+     */
     public void speichern(View v) {
         SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -82,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Erfolgreich gespeichert!", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * The "MR" button (Memory Recall) restores the respective stored value.
+     * @param v The view object of the calculator
+     */
     public void laden(View v) {
         SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
         int ergebnis = sharedPref.getInt("Ergebnis", 0);
